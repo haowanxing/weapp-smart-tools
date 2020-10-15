@@ -1,0 +1,31 @@
+/**index.wxss**/
+input {
+  border: 1pt solid;
+}
+button {
+  margin-top: 2pt;
+}
+.devices {
+  color: red;
+  margin-top: 3pt;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}

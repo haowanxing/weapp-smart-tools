@@ -1,0 +1,41 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view> -->
+  <view>
+    <block>
+      <label for="ssid">SSID:
+        <input type="text" name="ssid" id="ssid" value="{{ssid}}" disabled="disabled"/>
+      </label>
+    </block>
+    <block>
+      <label for="bssid">BSSID:
+        <input type="text" name="bssid" id="bssid" value="{{bssid}}" bindinput="setBssid" disabled="disabled"/>
+      </label>
+    </block>
+    <block>
+      <label for="password">password:
+        <input type="text" name="password" id="password" value="{{password}}" bindinput="setPassword"/>
+      </label>
+    </block>
+    <block>
+      <view class="devices" wx:for="{{devices}}">{{item.mac}}-{{item.ip}}</view>
+    </block>
+    
+    
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view>
+    <button bindtap="doConfig">开始!</button>
+  </view>
+  <view>
+    <button bindtap="doStop">终止!</button>
+  </view>
+</view>
