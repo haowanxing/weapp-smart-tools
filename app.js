@@ -30,6 +30,13 @@ App({
             }
           })
         }
+        if (!res.authSetting['scope.userLocation']){
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success () {
+            }
+          })
+        }
       }
     })
   },

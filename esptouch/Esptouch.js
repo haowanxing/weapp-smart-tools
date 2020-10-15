@@ -370,7 +370,8 @@ class EsptouchTask{
         let mac = msg.slice(1,7);
         let macArr = [];
         for(let i in mac){
-          macArr[i] = mac[i].toString(16);
+          let hex = mac[i].toString(16);
+          macArr[i] = hex.length==2?hex:'0'.concat(hex);
         }
         this.resultData = {
           mac: macArr.join(':'),

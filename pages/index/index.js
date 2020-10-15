@@ -8,12 +8,14 @@ const app = getApp()
 Page({
   data: {
     motto: '请填写并按下按钮',
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    tips: '',
+    wifiList:[{SSID:"+暂未获取WIFi列表+",BSSID:''}],
+    wifiIndex:-1,
     esp:null,
-    ssid:"wihidden2",
-    bssid:"00:1f:7a:59:4b:00",
-    password:"12345678",
+    currentBssid:"",
+    ssid:"",
+    bssid:"",
+    password:"",
     devices:[]
   },
   //事件处理函数
@@ -36,16 +38,22 @@ Page({
             _this.setData({
               ssid: res.wifi.SSID,
               bssid: res.wifi.BSSID,
+              currentBssid:res.wifi.BSSID,
             })
           },
           fail:function(err){
-            console.log(err);
+            console.log('getConnectedWifi fail',err);
+            _this.setData({tips:"请先打开WiFi并连接到需要配置的信号"})
           },
           complete:function(res){
-            console.log('cmplt',res,'wifiinfo', _this.data);
+            console.log('cmplt',res);
           }
-        })
+        });
       },
+      fail: (err)=>{
+        console.log('startWifi fail',err);
+        _this.setData({tips:"请先打开WiFi并连接到需要配置的信号"})
+      }
     })
   },
   getUserInfo: function(e) {
@@ -56,6 +64,28 @@ Page({
       hasUserInfo: true
     })
   },
+  getWiFiList:function(e){
+    let _this = this;
+    wx.getWifiList({
+      success: (res) => {
+        console.log('getWifiList',res);
+        wx.onGetWifiList((result) => {
+          console.log('onGetWifiList', result);
+          _this.setData({wifiList: result.wifiList});
+        });
+      },
+    })
+  },
+  selectWifi:function(e){
+    let _this = this;
+    let index = e.currentTarget.dataset.index;
+    _this.setData({wifiIndex:index});
+    let wifiInfo = _this.data.wifiList[index];
+    _this.setData({
+      bssid: wifiInfo.BSSID,
+      ssid:wifiInfo.SSID
+    });
+  },
   setBssid:function(e){
     this.setData({
       bssid: e.detail.value
@@ -65,6 +95,21 @@ Page({
     this.setData({
       password: e.detail.value
     })
+  },
+  preDoing:function(){
+    let _this = this;
+    if(_this.data.currentBssid != _this.data.bssid){
+      wx.connectWifi({
+        SSID: _this.data.ssid,
+        password: _this.data.password,
+        success (res) {
+          console.log(res.errMsg);
+          _this.setData({currentBssid: _this.data.bssid});
+        }
+      })
+    }else{
+      this.doConfig();
+    }
   },
   doConfig:function(){
     let _this = this;

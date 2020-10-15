@@ -7,6 +7,9 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view> -->
+  <view class="tips" wx:if="{{tips.length!=0}}">
+    提示：<text>{{tips}}</text>
+  </view>
   <view>
     <block>
       <label for="ssid">SSID:
@@ -26,16 +29,33 @@
     <block>
       <view class="devices" wx:for="{{devices}}">{{item.mac}}-{{item.ip}}</view>
     </block>
-    
-    
+  </view>
+  <view class="wifiList">
+    <text>WiFi列表：</text>
+    <scroll-view scroll-y="true" style="height: 300rpx;" scroll-into-view="{{toView}}">
+      <view wx:for="{{wifiList}}" wx:key="index" data-index="{{index}}" bindtap="selectWifi">
+        <view wx:if="{{wifiIndex == index}}" style="background:grey;color:white;">
+          {{item.SSID}}
+        </view>
+        <view wx:else>
+          {{item.SSID}}
+        </view>
+      </view>
+    </scroll-view>
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <view>
-    <button bindtap="doConfig">开始!</button>
+  <view wx:if="{{currentBssid == bssid}}">
+    <button bindtap="doConfig">开始配网!</button>
+  </view>
+  <view wx:else>
+    <button bindtap="preDoing">连接WiFi</button>
   </view>
   <view>
     <button bindtap="doStop">终止!</button>
+  </view>
+  <view>
+    <button bindtap="getWiFiList">获取WiFi列表</button>
   </view>
 </view>
