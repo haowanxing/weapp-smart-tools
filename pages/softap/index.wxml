@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="wifi-info">
-    <label for="target-ssid">AP-SSID:<input type="text" name="target-ssid" bindinput="inputAPSSID" disabled="disabled" placeholder="需要配置的SSID名称" value="{{apssid}}" /></label>
+    <label for="target-ssid">AP-SSID:<input style="background-color:#ccc;" type="text" name="target-ssid" bindinput="inputAPSSID" disabled="disabled" placeholder="需要配置的SSID名称" value="{{apssid}}" /></label>
     <label for="target-psw">AP-PSW:<input type="text" name="target-psw" bindinput="inputAPPSW" placeholder="需要配置的SSID密码" value="{{appsw}}" /></label>
     <label for="dev-ssid">设备-SSID:<input type="text" name="dev-ssid" bindinput="inputDEVICESSID" placeholder="设备的SSID名称" value="{{devicessid}}" /></label>
     <label for="dev-psw">设备-PSW:<input type="text" name="dev-psw" bindinput="inputDEVICEPSW" placeholder="设备的SSID密码" value="{{devicepsw}}" /></label>
@@ -10,6 +10,7 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <view>
-    <button bindtap="start">开始配网</button>
+    <button wx:if="{{progress}}" bindtap="stop">终止配网</button>
+    <button wx:else bindtap="start">开始配网</button>
   </view>
 </view>

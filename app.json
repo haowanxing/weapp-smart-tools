@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/smartconfig/index"
+    "pages/smartconfig/index",
+    "pages/softap/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -9,14 +9,14 @@ const app = getApp()
 Page({
   data: {
     motto: 'Hello World',
-    apssid:'wihidden2',
-    appsw:'12345678',
-    devicessid:'4006500311',
-    devicepsw:'4006500311'
+    apssid:app.globalData.config.apSsid,
+    appsw:app.globalData.config.apPassword,
+    devicessid:app.globalData.config.softApSsid,
+    devicepsw:app.globalData.config.softApPassword,
+    progress:null,
   },
   onLoad: function () {
     let _this = this;
-    
   },
   onShow: function () {
     let _this = this;
@@ -56,15 +56,21 @@ Page({
       },
       onSuccess: function(res){
         console.log('app', res);
-        _this.setData({motto:'配网成功'+res.message});
+        _this.setData({motto:'配网成功'+res.message,progress:null});
       },
       onError: function(err){
         console.log('app', err);
-        _this.setData({motto:'配网失败'+err.message});
+        _this.setData({motto:'配网失败'+err.message, progress:null});
       }
     });
-    _this.setData({motto:'配网中'});
+    _this.setData({motto:'配网中',progress: m});
     m.start();
     // _this.setData({motto:'配网结束'});
   },
+  stop: function(){
+    if(this.data.progress){
+      this.data.progress.interrupt();
+      this.setData({motto:'已终止',progress:null});
+    }
+  }
 })

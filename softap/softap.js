@@ -22,7 +22,7 @@ class SoftAP {
   devicePassword='4006500311';
   listenPort='18266';
   tartgetPort='8266';
-  tartgetAddress='192.168.4.2';
+  tartgetAddress='255.255.255.255';
   msgStrToSend=''
   udpClient;
   waitMills=30e3;
@@ -55,10 +55,6 @@ class SoftAP {
   }
   start(){
     let _this = this;
-    clearTimeout(_this.waitTimeouter);
-    _this.waitTimeouter = setTimeout(()=>{
-      _this._fail(_this.packError(504, 'Config timeout'));
-    }, _this.waitMills)
     wx.startWifi({
       success: (res) => {
         let eCode = {
@@ -73,13 +69,14 @@ class SoftAP {
           password: _this.apPassword,
           success: function(apRes){
             _this.onStep(parseStep(STEP_CONNECTED_AP));
+            console.log('connected WIFI-AP',apRes);
             // 2.连接设备热点，加入局域网
             wx.connectWifi({
               SSID: _this.deviceSSID,
               password: _this.devicePassword,
-              success: (res)=>{
+              success: (hotRes)=>{
                 _this.onStep(parseStep(STEP_CONNECTED_DEVICE));
-                console.log('connected WIFI-AP',res);
+                console.log('connected WIFI-Hotspot',hotRes);
                 // 3.拼装消息体
                 let info = {
                   "cmd":'softap-wifi-config',
@@ -93,13 +90,17 @@ class SoftAP {
               },
               fail:function(err){
                 console.log('connect WiFi error:', err)
-                _this._fail(_this.packError(202, '连接设备热点失败'));
+                let errMsg = '';
+                if(eCode[err.errCode]){
+                  errMsg = eCode[err.errCode];
+                }
+                _this._fail(_this.packError(202, '连接设备热点失败:'+errMsg, err));
               }
             });
           },
           fail: (err)=>{
             console.log('connect WiFi-AP error:', err)
-            let errMsg = '未知原因';
+            let errMsg = '';
             if(eCode[err.errCode]){
               errMsg = eCode[err.errCode];
             }
@@ -133,6 +134,10 @@ class SoftAP {
   }
   _sendConfig(){
     let _this = this;
+    clearTimeout(_this.waitTimeouter);
+    _this.waitTimeouter = setTimeout(()=>{
+      _this._fail(_this.packError(504, 'Config timeout'));
+    }, _this.waitMills)
     _this.onStep(parseStep(STEP_SEND_WIFIINFO));
     clearInterval(_this.sendInterval);
     _this.sendInterval = setInterval(()=>{

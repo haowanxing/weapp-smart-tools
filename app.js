@@ -39,8 +39,38 @@ App({
         }
       }
     })
+    let accountInfo = wx.getAccountInfoSync();
+    this.globalData.accountInfo = accountInfo;
+    this.globalData.config = this.globalData.defaultConfig[accountInfo.miniProgram.envVersion];
   },
   globalData: {
-    userInfo: null
+    accountInfo:null,
+    userInfo: null,
+    config:{
+      apSsid:"",
+      apPassword:"",
+      softApSsid:"WiWide",
+      softApPassword:"wiwide1234567890"
+    },
+    defaultConfig:{
+      develop:{
+        apSsid:"wihidden2",
+        apPassword:"12345678",
+        softApSsid:"ESP_SOFTAP",
+        softApPassword:"12345678"
+      },
+      trial:{
+        apSsid:"WiWide",
+        apPassword:"wiwide123456",
+        softApSsid:"4006500311",
+        softApPassword:"4006500311"
+      },
+      release:{
+        apSsid:"",
+        apPassword:"",
+        softApSsid:"",
+        softApPassword:""
+      }
+    }
   }
 })
