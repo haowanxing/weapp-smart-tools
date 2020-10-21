@@ -181,22 +181,36 @@ class SoftAP {
     let _this = this;
     let msg = _this._parseRecvMsg(res.message);
     console.log('receive message:', msg)
-    let recv = JSON.parse(msg);
-    // 回应中有设备的ProductID或DeviceName则存储
-    if(recv.productId){
-      _this.deviceProductId = recv.productId;
-    }
-    if(recv.deviceName){
-      _this.deviceName = recv.deviceName;
-    }
-    if(recv.cmd == "softap-connected"){ // 配网完成
-      _this.onStep(parseStep(STEP_SOFTAP_SUCCESS));
-      _this._success();
-    }else if(recv.cmd == "softap-received"){  // 收到配网信息，则设备尝试连接AP
-      _this.onStep(parseStep(STEP_SOFTAP_CONNECTING_AP));
-    }else if(recv.cmd == "softap-error"){
-      _this.onStep(parseStep(STEP_SOFTAP_FAILED));  // 收到设备的连接失败回复
-      _this._fail(_this.packError(401, '设备连接AP失败', recv.msg));
+    try{
+      let recv = JSON.parse(msg);
+      // 回应中有设备的ProductID或DeviceName则存储
+      if(recv.productId){
+        _this.deviceProductId = recv.productId;
+      }
+      if(recv.deviceName){
+        _this.deviceName = recv.deviceName;
+      }
+      if(recv.cmd == "softap-connected"){ // 配网完成
+        /**
+         * {"cmd":"softap-connected","productId":"AABBCCEEDD","deviceName":"XXX","ssid":"SSID","password":"12345678"}
+         */
+        _this.onStep(parseStep(STEP_SOFTAP_SUCCESS));
+        _this._success();
+      }else if(recv.cmd == "softap-received"){  // 收到配网信息，则设备尝试连接AP
+        /**
+         * {"cmd":"softap-received","productId":"AABBCCEEDD","deviceName":"XXX","ssid":"SSID","password":"12345678"}
+         */
+        _this.mIsInterrupted = true;
+        _this.onStep(parseStep(STEP_SOFTAP_CONNECTING_AP));
+      }else if(recv.cmd == "softap-error"){
+        /**
+         * {"cmd":"softap-error","msg":"1连接超时|2密码错误|3找不到AP|4连接失败","productId":"AABBCCEEDD","deviceName":"XXX","ssid":"SSID","password":"12345678"}
+         */
+        _this.onStep(parseStep(STEP_SOFTAP_FAILED));  // 收到设备的连接失败回复
+        _this._fail(_this.packError(401, '设备连接AP失败', recv.msg));
+      }
+    }catch(exception){
+      return console.warn('无法解析收到的UDP消息：', res, exception);
     }
   }
 }
