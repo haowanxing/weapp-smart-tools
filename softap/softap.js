@@ -129,7 +129,7 @@ class SoftAP {
     this.backToAPConnection();
     this.onSuccess(_this.packError(0, '配网完成', {
       deviceName: _this.deviceName,
-      productId: _this.productId
+      productId: _this.deviceProductId
     }));
   }
   _sendConfig(){

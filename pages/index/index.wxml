@@ -1,11 +1,15 @@
 <!--index.wxml-->
 <view class="container">
   <view class="tools">
-    <view class="box" wx:for="{{boxList}}" wx:key="title" data-url="{{item.url}}" data-title="{{item.title}}" bindtap="boxJump" style="background-color:{{colorArr[index%colorArr.length]}}">{{item.title}}</view>
+    <block wx:for="{{boxList}}" wx:key="title">
+      <view wx:if="{{item.type=='line'}}" class="box-type">{{item.title}}</view>
+      <view wx:else class="box" data-url="{{item.url}}" data-title="{{item.title}}" bindtap="boxJump" style="background-color:{{colorArr[index%colorArr.length]}}">{{item.title}}</view>
+    </block>
+    
   </view>
 </view>
 
 
-<view class="footer">
+<!-- <view class="footer">
   Smart工具箱@imsry.cn
-</view>
+</view> -->

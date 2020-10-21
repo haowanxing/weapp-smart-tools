@@ -11,8 +11,10 @@ Page({
       "#66CDAA", "#00CED1", "#9F79EE", "#CD3333", "#FFC125", "#32CD32",
       "#00BFFF", "#68A2D5", "#FF69B4", "#DB7093", "#CD3278", "#607B8B"],
     boxList:[
-      {title:"SmartConfig配网",url:"../smartconfig/index"},
-      {title:"SoftAP配网",url:"../softap/index"},
+      {title:"设备配网",type:"line"},
+      {title:"SmartConfig",url:"../smartconfig/index"},
+      {title:"SoftAP",url:"../softap/index"},
+      {title:"其他",type:"line"},
       {title:"开发中...",url:""},
       {title:"开发中...",url:""},
       {title:"开发中...",url:""}

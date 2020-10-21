@@ -56,7 +56,8 @@ Page({
       },
       onSuccess: function(res){
         console.log('app', res);
-        _this.setData({motto:'配网成功'+res.message,progress:null});
+        let info = res.data.deviceName + " " + res.data.productId;
+        _this.setData({motto:'配网成功：'+info,progress:null});
       },
       onError: function(err){
         console.log('app', err);
