@@ -1,7 +1,11 @@
 <!--index.wxml-->
 <view class="container">
   <view class="tools">
-    <view class="box" bindtap="toSmartconfig">SmartConfig配网</view>
-    <view class="box" bindtap="toSoftAP">SoftAP配网</view>
+    <view class="box" wx:for="{{boxList}}" wx:key="title" data-url="{{item.url}}" data-title="{{item.title}}" bindtap="boxJump" style="background-color:{{colorArr[index%colorArr.length]}}">{{item.title}}</view>
   </view>
+</view>
+
+
+<view class="footer">
+  Smart工具箱@imsry.cn
 </view>

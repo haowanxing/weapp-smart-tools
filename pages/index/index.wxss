@@ -1,15 +1,27 @@
 /**index.wxss**/
+.container{
+  /* height: 400pt; */
+}
+
 .tools {
   width: 90%;
   margin-top: 20pt;
 }
 .box {
   display: inline-block;
-  border: 2pt solid skyblue;
-  margin: 2pt 0 0 5pt;
+  border-radius: 10pt;
+  margin: 5pt;
   width: 45%;
-  height: 30pt;
-  background-color: silver;
+  height: 40pt;
+  background-color: rgb(255, 187, 0);
+  color: white;
   text-align: center;
-  line-height: 30pt;
+  line-height: 40pt;
+}
+
+.footer{
+  margin-top: 20pt;
+  text-align: center;
+  color: whitesmoke;
+  background-color: #999;
 }
