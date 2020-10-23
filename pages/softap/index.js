@@ -14,6 +14,7 @@ Page({
     devicessid:app.globalData.config.softApSsid,
     devicepsw:app.globalData.config.softApPassword,
     progress:null,
+    step:0
   },
   onLoad: function () {
     let _this = this;
@@ -53,6 +54,26 @@ Page({
       onStep: function(step){
         console.log('[STEP]', step);
         _this.setData({motto:'配网中...'+step.message});
+        switch(step.code){
+          case "STEP_CONNECTED_AP":
+            _this.setData({step:1});
+            break;
+          case "STEP_CONNECTED_DEVICE":
+            _this.setData({step:2});
+            break;
+          case "STEP_SEND_WIFIINFO":
+            _this.setData({step:3});
+            break;
+          case "STEP_SOFTAP_CONNECTING_AP":
+            _this.setData({step:4});
+            break;
+          case "STEP_SOFTAP_SUCCESS":
+            _this.setData({step:5});
+            break;
+          case "STEP_SOFTAP_FAILED":
+            _this.setData({step:6});
+            break;
+        }
       },
       onSuccess: function(res){
         console.log('app', res);
@@ -61,7 +82,7 @@ Page({
       },
       onError: function(err){
         console.log('app', err);
-        _this.setData({motto:'配网失败'+err.message, progress:null});
+        _this.setData({motto:'配网失败：'+err.message, progress:null});
       }
     });
     _this.setData({motto:'配网中',progress: m});

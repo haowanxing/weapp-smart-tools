@@ -1,10 +1,30 @@
 <!--index.wxml-->
 <view class="container">
   <view class="wifi-info">
-    <label for="target-ssid">AP-SSID:<input style="background-color:#ccc;" type="text" name="target-ssid" bindinput="inputAPSSID" disabled="disabled" placeholder="需要配置的SSID名称" value="{{apssid}}" /></label>
+    <label for="target-ssid">AP-SSID:<input style="background-color:#ccc;" type="text" name="target-ssid" bindinput="inputAPSSID" placeholder="需要配置的SSID名称" value="{{apssid}}" /></label>
     <label for="target-psw">AP-PSW:<input type="text" name="target-psw" bindinput="inputAPPSW" placeholder="需要配置的SSID密码" value="{{appsw}}" /></label>
     <label for="dev-ssid">设备-SSID:<input type="text" name="dev-ssid" bindinput="inputDEVICESSID" placeholder="设备的SSID名称" value="{{devicessid}}" /></label>
     <label for="dev-psw">设备-PSW:<input type="text" name="dev-psw" bindinput="inputDEVICEPSW" placeholder="设备的SSID密码" value="{{devicepsw}}" /></label>
+  </view>
+  <view class="step-info">
+    <view>
+      <block wx:if="{{step > 0}}">J</block><block wx:else>O</block>
+      <text>连接AP路由器</text>
+    </view>
+    <view>
+      <block wx:if="{{step > 1}}">J</block><block wx:else>O</block>
+      <text>与设备建立连接</text>
+    </view>
+    <view><block wx:if="{{step > 2}}">J</block><block wx:else>O</block>
+      <text>向设备发送配置</text>
+    </view>
+    <view><block wx:if="{{step > 3}}">J</block><block wx:else>O</block>
+      <text>设备连接AP路由器</text>
+    </view>
+    <view>
+      <block wx:if="{{step > 5}}">X</block><block wx:elif="{{step > 4}}">J</block><block wx:else>O</block>
+      <text>配网完成</text>
+    </view>
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>

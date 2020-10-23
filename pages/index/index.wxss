@@ -28,7 +28,6 @@
   text-align: center;
   line-height: 40pt;
 }
-
 .footer{
   margin-top: 20pt;
   text-align: center;

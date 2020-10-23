@@ -16,8 +16,8 @@ Page({
       {title:"SoftAP",url:"../softap/index"},
       {title:"其他",type:"line"},
       {title:"开发中...",url:""},
-      {title:"开发中...",url:""},
-      {title:"开发中...",url:""}
+      // {title:"开发中...",url:""},
+      // {title:"开发中...",url:""}
     ],
   },
   onLoad: function () {
