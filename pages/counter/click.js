@@ -20,7 +20,17 @@ Page({
     try{
       let record = wx.getStorageSync(STORE_KEY);
       if(record){
-        this.setData({record:record});
+        let _num_in = 0;
+        let _num_out = 0;
+        for(let i in record){
+          let o = record[i];
+          if(o.type == 1){
+            _num_in += o.num;
+          }else if(o.type == 0){
+            _num_out += o.num;
+          }
+        }
+        this.setData({record:record,num_in:_num_in,num_out:_num_out});
       }else{
         this.setData({record:[]});
       }
@@ -125,7 +135,7 @@ Page({
     wx.removeStorage({
       key: STORE_KEY,
     });
-    this.setData({record:[]});
+    this.setData({record:[],num_in:0,num_out:0});
   },
   cleaner: function(){
     let _this = this;
