@@ -28,16 +28,18 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
     "packNpmManually": false,
-    "packNpmRelationList": []
+    "packNpmRelationList": [],
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.13.1",
   "appid": "wx3abc0b4d5ad650c7",
-  "projectname": "esptouch-demo",
+  "projectname": "smart-tools",
   "debugOptions": {
     "hidedInDevtools": []
   },

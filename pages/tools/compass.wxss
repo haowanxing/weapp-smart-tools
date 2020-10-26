@@ -1,0 +1,49 @@
+/* pages/tools/compass.wxss */
+page{
+  background-color: #015c8a;
+}
+.container {
+  font-family: "microsoft yahei";
+}
+.tip {
+  width: 100%;
+}
+.tip image {
+  width: 100%;
+}
+.tip-btn {
+  width: 250rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  margin: 50rpx;
+  font-size: 30rpx;
+  background-color: #e84e4e;
+  border-radius: 10px;
+  color: #fff;
+}
+.tip-pic {
+  width: 750rpx;
+  height: 375rpx;
+}
+.text {
+  text-align: center;
+  color: white;
+  font-size: 56rpx;
+  padding-top: 50rpx
+}
+.text text {
+  display: block;
+}
+.pic {
+  height: 650rpx;
+  width: 650rpx;
+  position: absolute;
+  top: 50%;
+  left: 50rpx;
+  margin-top: -325rpx;
+}
+.pic image {
+  width: 100%;
+  height: 100%;
+}

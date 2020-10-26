@@ -1,0 +1,24 @@
+<!--pages/tools/compass.wxml-->
+<view class="container">
+  <block wx:if="{{isTip}}">
+    <!-- <view class="tip">
+      <image src="../../images/compass/tip.jpg"></image>
+    </view> -->
+    <view class="text">
+      <text>请您远离磁场干扰源</text>
+      <text>并按下图所示校准指南针</text>
+    </view>
+  <image class="tip-pic" src="../../images/compass/tip.jpg"></image>
+  <view class="tip-btn" bindtap="kown">我知道了</view>
+  </block>
+  <block wx:else>
+    <view class="text">
+      <text>{{direction}}</text>
+      <text>{{angle}}°</text>
+    </view>
+    <view class="pic">
+      <image src="../../images/compass/compass2.png" style="transform: rotate({{rotate}}deg);"></image>
+    </view>
+  </block>
+  
+</view>

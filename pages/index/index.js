@@ -16,6 +16,8 @@ Page({
       {title:"SoftAP",url:"../softap/index"},
       {title:"效率统计",type:"line"},
       {title:"客流计数",url:"../counter/click"},
+      {title:"实用工具",type:"line"},
+      {title:"罗盘",url:"../tools/compass"},
       {title:"其他",type:"line"},
       {title:"开发中...",url:""},
       // {title:"开发中...",url:""},
