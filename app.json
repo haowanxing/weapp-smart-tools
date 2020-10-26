@@ -1,18 +1,19 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/smartconfig/index",
-    "pages/softap/index"
+    "pages/softap/index",
+    "pages/counter/click"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Smart工具箱",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "permission":{
+  "permission": {
     "scope.userLocation": {
       "desc": "允许小程序获取您的WiFi列表"
     }

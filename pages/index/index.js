@@ -14,6 +14,8 @@ Page({
       {title:"设备配网",type:"line"},
       {title:"SmartConfig",url:"../smartconfig/index"},
       {title:"SoftAP",url:"../softap/index"},
+      {title:"效率统计",type:"line"},
+      {title:"客流计数",url:"../counter/click"},
       {title:"其他",type:"line"},
       {title:"开发中...",url:""},
       // {title:"开发中...",url:""},

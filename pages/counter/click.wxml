@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="total">
+    <text>进：{{num_in}}</text>
+    <text>出：{{num_out}}</text>
+  </view>
+  <view class="control">
+      <view bindtap="delIn" data-num="1" class="btn" style="background-color:{{color[0]}}">删进</view>
+      <view bindtap="delOut" data-num="1" class="btn" style="background-color:{{color[0]}}">删出</view>
+      <view bindtap="addIn" data-num="1" class="btn" style="background-color:{{color[1]}}">进 +1</view>
+      <view bindtap="addIn" data-num="2" class="btn" style="background-color:{{color[1]}}">进 +2</view>
+      <view bindtap="addOut" data-num="1" class="btn" style="background-color:{{color[2]}}">出 +1</view>
+      <view bindtap="addOut" data-num="2" class="btn" style="background-color:{{color[2]}}">出 +2</view>
+  </view>
+  <block wx:if="{{record.length > 0}}">
+    <view>
+      <view class="sm-btn copy" bindtap="copy">复制列表</view>
+      <view class="sm-btn clear" bindtap="cleaner">清空</view>
+    </view>
+    <view class="list">
+      <view wx:for="{{record}}" wx:key="index">
+        <text>{{item.time}}</text>
+        <text style="background-color:{{item.num<0?color[0]:(item.type==1?color[1]:color[2])}}">{{item.type==1?"进":"出"}} </text>
+        <text>{{item.num}}</text>
+      </view>
+    </view>
+  </block>
+</view>

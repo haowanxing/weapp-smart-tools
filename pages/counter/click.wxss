@@ -1,0 +1,41 @@
+/* pages/counter/click.wxss */
+.total text{
+  margin: 1pt 10pt;
+  font-size: 14pt;
+}
+.control {
+
+}
+.control .btn{
+  display: inline-block;
+  border-radius: 10pt;
+  margin: 10pt;
+  width: 40%;
+  height: 40pt;
+  background-color: rgb(255, 187, 0);
+  color: white;
+  font-size: 14pt;
+  text-align: center;
+  line-height: 40pt;
+}
+.sm-btn{
+  display: inline-block;
+  margin: 10pt;
+  background-color: rgb(226, 255, 169);
+  border-radius: 30pt;
+  width: 80pt;
+  height: 20pt;
+  text-align: center;
+  line-height: 20pt;
+}
+.copy {
+  background-color: rgb(151, 222, 12);
+}
+.clear{
+  background-color: #ff4a4a;
+}
+.list text{
+  display: inline-block;
+  margin: 1pt;
+  padding: 2pt;
+}

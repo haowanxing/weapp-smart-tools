@@ -2,9 +2,9 @@
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
 
     // 登录
     wx.login({
@@ -49,19 +49,19 @@ App({
     config:{
       apSsid:"",
       apPassword:"",
-      softApSsid:"WiWide",
-      softApPassword:"wiwide1234567890"
+      softApSsid:"",
+      softApPassword:""
     },
     defaultConfig:{
       develop:{
-        apSsid:"wihidden2",
-        apPassword:"12345678",
+        apSsid:"jiajiajia",
+        apPassword:"400302100",
         softApSsid:"ESP_SOFTAP",
         softApPassword:"12345678"
       },
       trial:{
-        apSsid:"WiWide",
-        apPassword:"wiwide123456",
+        apSsid:"jiajiajia",
+        apPassword:"400302100",
         softApSsid:"4006500311",
         softApPassword:"4006500311"
       },
