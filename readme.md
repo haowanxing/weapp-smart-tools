@@ -1,5 +1,5 @@
-## SmartConfig配网工具-微信小程序版
+## Smart工具箱-微信小程序版
 
-> 工具类项目，主要工作都在实现Esptouch的SmartConfig配网逻辑，使用UDP广播发送配网信息。
+> 工具类项目，创建初期为了实现Esptouch配网和SoftAP配网工具，后续用来继续在上面补充一些小的工具。
 
 ![](./weapp.jpg)

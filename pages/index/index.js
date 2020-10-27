@@ -26,10 +26,8 @@ Page({
     ],
   },
   onLoad: function () {
-    let _this = this;
   },
   onShow: function(){
-    let _this = this;
   },
   //事件处理函数
   boxJump:function(e){
