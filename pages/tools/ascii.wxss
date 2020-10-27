@@ -1,0 +1,36 @@
+.table {
+  border: 0px solid darkgray;
+ }
+ .tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
+ }
+ .td {
+  width:40%;
+  justify-content: center;
+  text-align: center;
+ }
+ .bg-w{
+  background: snow;
+ }
+ .bg-g:nth-child(odd){
+  background: #101010;
+  color: #fff;
+ }
+ .bg-g:nth-child(even){
+  background: #404040;
+  color: #fff;
+ }
+ .th {
+  width: 40%;
+  justify-content: center;
+  border-bottom: 2pt solid #7d7d7d;
+  background-image: linear-gradient(#1c1c1c, #3d3d3d);
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+ }

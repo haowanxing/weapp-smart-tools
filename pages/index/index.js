@@ -17,6 +17,7 @@ Page({
       {title:"效率统计",type:"line"},
       {title:"客流计数",url:"../counter/click"},
       {title:"实用工具",type:"line"},
+      {title:"ASCII码对照表",url:"../tools/ascii"},
       {title:"罗盘",url:"../tools/compass"},
       {title:"其他",type:"line"},
       {title:"开发中...",url:""},

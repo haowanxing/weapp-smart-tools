@@ -1,0 +1,13 @@
+<wxs module="filter" src="./tools.wxs"></wxs>
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">ASCII(10进制)</view>
+    <view class="th">ASCII(16进制)</view>
+    <view class="th">控制字符</view>
+  </view>
+  <view class="tr bg-g" wx:for="{{ascii}}" wx:key="index">
+    <view class="td">{{index}}</view>
+    <view class="td">{{filter.decToHex(index)}}</view>
+    <view class="td">{{item}}</view>
+  </view>
+</view>

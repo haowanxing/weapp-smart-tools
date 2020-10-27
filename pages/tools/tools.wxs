@@ -1,0 +1,16 @@
+var filter = {
+	numberToFixed: function(value){
+		return value.toFixed(2);
+  },
+  decToHex: function(value, len = 2){
+    var o = value.toString(16);
+    while(o.length < len){
+      o = '0'+o;
+    }
+    return "0x"+o;
+  }
+}
+module.exports = {
+	numberToFixed: filter.numberToFixed,
+	decToHex: filter.decToHex
+}
