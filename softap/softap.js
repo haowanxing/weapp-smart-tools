@@ -25,7 +25,7 @@ class SoftAP {
   tartgetAddress='255.255.255.255';
   msgStrToSend=''
   udpClient;
-  waitMills=30e3;
+  waitMills=60e3;
   waitTimeouter;
   mIsInterrupted=false;
   sendDuringMills=1e3;
