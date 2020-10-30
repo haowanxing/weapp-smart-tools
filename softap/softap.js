@@ -22,7 +22,7 @@ class SoftAP {
   devicePassword='ESP8266';
   listenPort='18266';
   tartgetPort='8266';
-  tartgetAddress='255.255.255.255';
+  tartgetAddress='192.168.4.1';
   msgStrToSend=''
   udpClient;
   waitMills=60e3;
@@ -30,6 +30,7 @@ class SoftAP {
   mIsInterrupted=false;
   sendDuringMills=1e3;
   sendInterval;
+  verifyAP=true;
   deviceProductId;
   deviceName;
   wxWiFiCode = {
@@ -49,6 +50,7 @@ class SoftAP {
     config.tartgetAddress ? this.tartgetAddress = config.tartgetAddress:'';
     config.tartgetPort ? this.tartgetPort = config.tartgetPort:'';
     config.listenPort ? this.listenPort = config.listenPort:'';
+    config.verifyAP==false ? this.verifyAP = false:'';
     config.onSuccess ? this.onSuccess = config.onSuccess:'';
     config.onError ? this.onError = config.onError:'';
     config.onStep ? this.onStep = config.onStep:'';
@@ -66,8 +68,12 @@ class SoftAP {
     let _this = this;
     wx.startWifi({
       success: (res) => {
-        // 1.连接所需AP，验证信息正确性
-        _this._connectAP();
+        if(_this.verifyAP){
+          // 1.连接所需AP，验证信息正确性
+          _this._connectAP();
+        }else{
+          _this._connectHotspot();
+        }
       },
     })
   }
@@ -151,7 +157,7 @@ class SoftAP {
   _success(){
     let _this = this;
     this.interrupt();
-    this._backToAPConnection();
+    // this._backToAPConnection();
     this.onSuccess(_this.packError(0, '配网完成', {
       deviceName: _this.deviceName,
       productId: _this.deviceProductId
