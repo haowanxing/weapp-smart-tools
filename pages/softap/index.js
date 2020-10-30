@@ -13,13 +13,12 @@ Page({
     appsw:app.globalData.config.apPassword,
     devicessid:app.globalData.config.softApSsid,
     devicepsw:app.globalData.config.softApPassword,
+    deviceList:[],
     progress:null,
-    step:0
+    step:0,
+    doRound:1
   },
   onLoad: function () {
-    let _this = this;
-  },
-  onShow: function () {
     let _this = this;
     wx.startWifi({
       success: (res) => {
@@ -31,6 +30,10 @@ Page({
         })
       },
     })
+  },
+  onShow: function () {
+    let _this = this;
+    
   },
   inputAPSSID: function(e){
     this.setData({apssid:e.detail.value})
@@ -44,6 +47,9 @@ Page({
   inputDEVICEPSW: function(e){
     this.setData({devicepsw:e.detail.value})
   },
+  inputROUND: function(e){
+    this.setData({doRound:e.detail.value})
+  },
   start: function(e){
     let _this = this;
     let m = new softap.SoftAP({
@@ -51,6 +57,7 @@ Page({
       apPassword:_this.data.appsw,
       deviceSSID:_this.data.devicessid,
       devicePassword:_this.data.devicepsw,
+      verifyAP: false,
       onStep: function(step){
         console.log('[STEP]', step);
         _this.setData({motto:'配网中...'+step.message});
@@ -77,12 +84,16 @@ Page({
       },
       onSuccess: function(res){
         console.log('app', res);
+        let list = _this.data.deviceList;
+        list.push({deviceName: res.data.deviceName, productId: res.data.productId})
         let info = res.data.deviceName + " " + res.data.productId;
-        _this.setData({motto:'配网成功：'+info,progress:null});
+        _this.setData({motto:'配网成功：'+info,progress:null,deviceList: list});
+        _this.checkRound();
       },
       onError: function(err){
         console.log('app', err);
         _this.setData({motto:'配网失败：'+err.message, progress:null});
+        _this.checkRound();
       }
     });
     _this.setData({motto:'配网中',progress: m});
@@ -93,6 +104,17 @@ Page({
     if(this.data.progress){
       this.data.progress.interrupt();
       this.setData({motto:'已终止',progress:null});
+    }
+  },
+  checkRound: function(){
+    let _this = this;
+    if(this.data.doRound-1 > 0){
+      console.log("round:", this.data.doRound-1,'当前循环: '+(_this.data.doRound-1));
+      _this.setData({motto:'当前循环: '+(_this.data.doRound-1)});
+      setTimeout(()=>{
+        _this.setData({doRound: this.data.doRound-1});
+        _this.start();
+      }, 3000);
     }
   }
 })
