@@ -155,9 +155,9 @@ Page({
   },
   copy: function(){
     let data = this.data.record.map((v)=>{
-      return v.time+" "+(v.type==1?"进":"出")+" "+v.num;
+      return v.time.split(' ')[1]+" "+(v.type==1?"进":"出")+" "+v.num;
     }).join("\n");
-    data = "进："+this.data.num_in+" 出："+this.data.num_out+"\n" + data;
+    data = formatTime(this.time())+"\n进："+this.data.num_in+" 出："+this.data.num_out+"\n" + data;
     wx.setClipboardData({
       data: data,
       success: function(res){
