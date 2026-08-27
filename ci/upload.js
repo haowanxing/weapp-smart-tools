@@ -27,7 +27,7 @@
 const ci = require('miniprogram-ci')
 const path = require('path')
 
-const version = process.argv[2] || '1.0.0'
+const version = process.argv[2] || '1.2.0'
 const desc = process.argv[3] || `CI上传 ${version}`
 
 const project = new ci.Project({
