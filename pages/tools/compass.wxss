@@ -1,22 +1,28 @@
 /* pages/tools/compass.wxss */
-page{
+page {
   background-color: #015c8a;
+  height: 100%;
+  overflow: hidden;
 }
+/* 全屏 flex，禁止拖动/滚动 */
 .container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
   font-family: "microsoft yahei";
-}
-.tip {
-  width: 100%;
-}
-.tip image {
-  width: 100%;
 }
 .tip-btn {
   width: 250rpx;
   height: 80rpx;
   text-align: center;
   line-height: 80rpx;
-  margin: 50rpx;
+  margin: 50rpx auto;
   font-size: 30rpx;
   background-color: #e84e4e;
   border-radius: 10px;
@@ -27,23 +33,170 @@ page{
   height: 375rpx;
 }
 .text {
+  flex-shrink: 0;
   text-align: center;
   color: white;
   font-size: 56rpx;
-  padding-top: 50rpx
+  padding-top: 30rpx;
 }
 .text text {
   display: block;
 }
-.pic {
-  height: 650rpx;
-  width: 650rpx;
-  position: absolute;
-  top: 50%;
-  left: 50rpx;
-  margin-top: -325rpx;
+
+/* 盘面舞台：占据剩余空间并居中盘面 */
+.stage {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
 }
-.pic image {
+.compass {
+  position: relative;
+  width: 650rpx;
+  height: 650rpx;
+}
+.face {
   width: 100%;
   height: 100%;
+}
+
+/* 顶部指向标：贴在盘面正上方，不遮挡度数 */
+.pointer {
+  position: absolute;
+  top: -40rpx;
+  left: 50%;
+  margin-left: -18rpx;
+  width: 0;
+  height: 0;
+  border-left: 18rpx solid transparent;
+  border-right: 18rpx solid transparent;
+  border-top: 34rpx solid #e84e4e;
+  z-index: 10;
+}
+
+/* 矢量盘面 */
+.dial {
+  position: relative;
+  width: 650rpx;
+  height: 650rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #fdf6e3 0%, #f2e4c4 70%, #e6d3a3 100%);
+  box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.35), inset 0 0 30rpx rgba(120, 90, 40, 0.25);
+  box-sizing: border-box;
+  border: 6rpx solid #8a6d3b;
+}
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2rpx solid rgba(138, 109, 59, 0.55);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+/* 字符环：每个字放在圆心，靠 transform 旋转+外移定位 */
+.ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.ring-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+.ring-item text {
+  position: absolute;
+  display: block;
+  transform-origin: center;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: -30rpx 0 0 -30rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* 简约样式的指针 */
+.needle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12rpx;
+  height: 440rpx;
+  margin: -220rpx 0 0 -6rpx;
+  border-radius: 6rpx;
+  background: linear-gradient(to bottom, #e84e4e 0%, #e84e4e 50%, #ffffff 50%, #ffffff 100%);
+}
+.center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  margin: -20rpx 0 0 -20rpx;
+  border-radius: 50%;
+  background: #3a2f24;
+  box-shadow: 0 0 0 6rpx #fdf6e3;
+}
+
+/* 中心太极图 */
+.taiji {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130rpx;
+  height: 130rpx;
+  margin: -65rpx 0 0 -65rpx;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #1a1a1a 50%, #fdf6e3 50%);
+  box-shadow: 0 0 0 4rpx #8a6d3b;
+}
+.taiji-dot {
+  position: absolute;
+  left: 50%;
+  width: 65rpx;
+  height: 65rpx;
+  margin-left: -32.5rpx;
+  border-radius: 50%;
+}
+.taiji-dot-top {
+  top: 0;
+  background: #fdf6e3;
+}
+.taiji-dot-bottom {
+  bottom: 0;
+  background: #1a1a1a;
+}
+.taiji-dot-top::after,
+.taiji-dot-bottom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18rpx;
+  height: 18rpx;
+  margin: -9rpx 0 0 -9rpx;
+  border-radius: 50%;
+}
+.taiji-dot-top::after {
+  background: #1a1a1a;
+}
+.taiji-dot-bottom::after {
+  background: #fdf6e3;
+}
+
+.hint {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 20rpx 0 40rpx;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 26rpx;
 }

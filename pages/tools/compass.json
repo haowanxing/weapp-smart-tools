@@ -1,7 +1,8 @@
 {
   "usingComponents": {},
   "navigationBarTitleText": "电子罗盘",
-  "backgroundTextStyle":"light",
+  "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#015c8a",
-  "navigationBarTextStyle":"white"
+  "navigationBarTextStyle": "white",
+  "disableScroll": true
 }
