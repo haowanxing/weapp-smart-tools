@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 连接配置 -->
+  <view class="card">
+    <view class="row">
+      <text class="label">Host</text>
+      <input class="input" type="text" value="{{brokerUrl}}" bindinput="setHost" placeholder="wxs://host:port/mqtt" disabled="{{connected||connecting}}" />
+    </view>
+    <view class="row">
+      <text class="label">用户名</text>
+      <input class="input" type="text" value="{{username}}" bindinput="setUsername" disabled="{{connected||connecting}}" />
+    </view>
+    <view class="row">
+      <text class="label">密码</text>
+      <input class="input" type="text" value="{{password}}" bindinput="setPassword" disabled="{{connected||connecting}}" />
+    </view>
+    <view class="status">
+      状态：<text class="{{connected?'ok':'off'}}">{{connected?'已连接':(connecting?'连接中...':'未连接')}}</text>
+    </view>
+    <button class="btn" type="primary" wx:if="{{!connected}}" loading="{{connecting}}" bindtap="connect">连接</button>
+    <button class="btn" type="warn" wx:else bindtap="disconnect">断开</button>
+  </view>
+
+  <!-- 订阅 -->
+  <view class="card">
+    <view class="row">
+      <text class="label">订阅</text>
+      <input class="input" type="text" value="{{topic}}" bindinput="setTopic" placeholder="Topic" />
+      <button class="btn-sm" type="primary" size="mini" bindtap="sub" disabled="{{!connected}}">订阅</button>
+    </view>
+    <view class="sub-list" wx:if="{{subscribeList.length}}">
+      <view class="tag" wx:for="{{subscribeList}}" wx:key="*this">
+        <text>{{item}}</text>
+        <text class="tag-close" data-topic="{{item}}" bindtap="unsub">×</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 发布 -->
+  <view class="card">
+    <view class="row">
+      <text class="label">发布</text>
+      <input class="input" type="text" value="{{pubTopic}}" bindinput="setPubTopic" placeholder="Topic" />
+    </view>
+    <view class="row">
+      <textarea class="textarea" value="{{pubMessage}}" bindinput="setPubMessage" placeholder="消息内容" />
+    </view>
+    <button class="btn" type="primary" bindtap="publish" disabled="{{!connected}}">发布</button>
+  </view>
+
+  <!-- 消息记录 -->
+  <view class="card">
+    <view class="msg-header">
+      <text>消息记录（{{messages.length}}）</text>
+      <text class="clear" bindtap="clearMessages">清空</text>
+    </view>
+    <view class="msg-list">
+      <view class="msg {{item.dir=='out'?'msg-out':'msg-in'}}" wx:for="{{messages}}" wx:key="index">
+        <view class="msg-meta">
+          <text class="msg-dir">{{item.dir=='out'?'发':'收'}}</text>
+          <text class="msg-topic">{{item.topic}}</text>
+          <text class="msg-time">{{item.time}}</text>
+        </view>
+        <view class="msg-payload">{{item.payload}}</view>
+      </view>
+      <view class="msg-empty" wx:if="{{!messages.length}}">暂无消息</view>
+    </view>
+  </view>
+</view>

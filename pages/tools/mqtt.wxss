@@ -1,0 +1,154 @@
+/* pages/tools/mqtt.wxss */
+.container {
+  padding: 16rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.06);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.label {
+  width: 120rpx;
+  flex-shrink: 0;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.input {
+  flex: 1;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  padding: 10rpx 14rpx;
+  font-size: 26rpx;
+  background: #fafafa;
+}
+
+.input[disabled] {
+  color: #999;
+  background: #f0f0f0;
+}
+
+.textarea {
+  flex: 1;
+  width: 100%;
+  height: 120rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  padding: 10rpx 14rpx;
+  font-size: 26rpx;
+  background: #fafafa;
+  box-sizing: border-box;
+}
+
+.status {
+  font-size: 26rpx;
+  margin: 8rpx 0 16rpx;
+  color: #666;
+}
+.status .ok { color: #07c160; }
+.status .off { color: #999; }
+
+.btn {
+  margin-top: 8rpx;
+}
+.btn-sm {
+  margin-left: 12rpx;
+  flex-shrink: 0;
+}
+
+.sub-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8rpx;
+}
+.tag {
+  display: flex;
+  align-items: center;
+  background: #e8f4ff;
+  color: #1989fa;
+  border-radius: 8rpx;
+  padding: 6rpx 12rpx;
+  margin: 6rpx 12rpx 0 0;
+  font-size: 24rpx;
+}
+.tag-close {
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  line-height: 1;
+  color: #1989fa;
+}
+
+.msg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+.msg-header .clear {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.msg-list {
+  max-height: 600rpx;
+  overflow-y: auto;
+}
+.msg {
+  border-radius: 8rpx;
+  padding: 12rpx;
+  margin-bottom: 12rpx;
+  font-size: 26rpx;
+}
+.msg-in { background: #f4f4f5; }
+.msg-out { background: #f0f9eb; }
+
+.msg-meta {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 6rpx;
+}
+.msg-dir {
+  flex-shrink: 0;
+  color: #fff;
+  background: #909399;
+  border-radius: 4rpx;
+  padding: 0 8rpx;
+  margin-right: 10rpx;
+}
+.msg-out .msg-dir { background: #07c160; }
+.msg-in .msg-dir { background: #409eff; }
+.msg-topic {
+  flex: 1;
+  color: #666;
+  word-break: break-all;
+}
+.msg-time {
+  flex-shrink: 0;
+  margin-left: 10rpx;
+}
+.msg-payload {
+  color: #333;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+.msg-empty {
+  text-align: center;
+  color: #ccc;
+  font-size: 26rpx;
+  padding: 30rpx 0;
+}

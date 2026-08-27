@@ -1,0 +1,5 @@
+{
+  "name": "smart-tools-ci",
+  "private": true,
+  "dependencies": { "miniprogram-ci": "^2.1.31" }
+}

@@ -5,7 +5,8 @@
     "pages/softap/index",
     "pages/counter/click",
     "pages/tools/compass",
-    "pages/tools/ascii"
+    "pages/tools/ascii",
+    "pages/tools/mqtt"
   ],
   "window": {
     "backgroundTextStyle": "light",

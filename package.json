@@ -1,0 +1,25 @@
+{
+  "name": "smart-tools",
+  "version": "1.0.0",
+  "description": "SmartToolBox",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haowanxing/weapp-smart-tools.git"
+  },
+  "keywords": [
+    "tools"
+  ],
+  "author": "haowanxing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haowanxing/weapp-smart-tools/issues"
+  },
+  "homepage": "https://github.com/haowanxing/weapp-smart-tools#readme",
+  "dependencies": {
+    "mqtt": "2.18.8"
+  }
+}
