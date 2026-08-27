@@ -5,6 +5,10 @@
       {
         "type": "file",
         "value": "weapp.jpg"
+      },
+      {
+        "type": "folder",
+        "value": "ci"
       }
     ]
   },

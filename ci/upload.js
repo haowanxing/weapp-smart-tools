@@ -35,7 +35,7 @@ const project = new ci.Project({
   type: 'miniProgram',
   projectPath: path.resolve(__dirname, '..'),
   privateKeyPath: path.resolve(__dirname, 'private.key'),
-  ignores: ['node_modules/**/*'],
+  ignores: ['node_modules/**/*', 'ci/**/*'],
 })
 
 ;(async () => {
