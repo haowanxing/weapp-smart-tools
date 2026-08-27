@@ -3,15 +3,23 @@
   <view class="card">
     <view class="row">
       <text class="label">Host</text>
-      <input class="input" type="text" value="{{brokerUrl}}" bindinput="setHost" placeholder="wxs://host:port/mqtt" disabled="{{connected||connecting}}" />
+      <input class="input" type="text" value="{{host}}" bindinput="setHost" placeholder="broker-cn.emqx.io" disabled="{{connected||connecting}}" />
+    </view>
+    <view class="row">
+      <text class="label">Port</text>
+      <input class="input" type="number" value="{{port}}" bindinput="setPort" placeholder="8084" disabled="{{connected||connecting}}" />
+    </view>
+    <view class="row">
+      <text class="label">ClientID</text>
+      <input class="input" type="text" value="{{clientId}}" bindinput="setClientId" placeholder="留空自动生成" disabled="{{connected||connecting}}" />
     </view>
     <view class="row">
       <text class="label">用户名</text>
-      <input class="input" type="text" value="{{username}}" bindinput="setUsername" disabled="{{connected||connecting}}" />
+      <input class="input" type="text" value="{{username}}" bindinput="setUsername" placeholder="匿名可留空" disabled="{{connected||connecting}}" />
     </view>
     <view class="row">
       <text class="label">密码</text>
-      <input class="input" type="text" value="{{password}}" bindinput="setPassword" disabled="{{connected||connecting}}" />
+      <input class="input" type="text" value="{{password}}" bindinput="setPassword" placeholder="匿名可留空" disabled="{{connected||connecting}}" />
     </view>
     <view class="status">
       状态：<text class="{{connected?'ok':'off'}}">{{connected?'已连接':(connecting?'连接中...':'未连接')}}</text>
