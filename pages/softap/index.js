@@ -18,6 +18,17 @@ Page({
     step:0,
     doRound:1
   },
+  onShareAppMessage: function () {
+    return {
+      title: 'SoftAP 配网工具',
+      path: '/pages/softap/index'
+    }
+  },
+  onShareTimeline: function () {
+    return {
+      title: 'SoftAP 配网工具'
+    }
+  },
   onLoad: function () {
     let _this = this;
     wx.startWifi({

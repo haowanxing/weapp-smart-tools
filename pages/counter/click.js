@@ -83,7 +83,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '客流计数器',
+      path: '/pages/counter/click'
+    }
+  },
+  onShareTimeline: function () {
+    return {
+      title: '客流计数器'
+    }
   },
   addIn:function(e){
     let num = parseInt(e.currentTarget.dataset.num);

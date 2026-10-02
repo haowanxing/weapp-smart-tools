@@ -31,6 +31,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  onShareAppMessage: function () {
+    return {
+      title: 'MQTT 调试工具',
+      path: '/pages/tools/mqtt'
+    }
+  },
+  onShareTimeline: function () {
+    return {
+      title: 'MQTT 调试工具'
+    }
+  },
   onLoad: function (options) {
     // 预置一个默认 ClientID，用户可自行修改
     this.setData({ clientId: 'smarttools_' + Date.now() });

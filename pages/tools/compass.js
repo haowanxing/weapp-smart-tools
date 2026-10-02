@@ -110,6 +110,11 @@ Page({
       path: '/pages/tools/compass'
     }
   },
+  onShareTimeline: function () {
+    return {
+      title: '迷你指南针 — 为您指引方向'
+    }
+  },
 
   // 点击罗盘顺序切换样式
   switchStyle: function () {

@@ -20,6 +20,7 @@ Page({
       {title:"ASCII码对照表",url:"../tools/ascii"},
       {title:"罗盘",url:"../tools/compass"},
       {title:"MQTT",url:"../tools/mqtt"},
+      {title:"万年历",url:"../tools/calendar"},
       {title:"其他",type:"line"},
       {title:"开发中...",url:""},
       // {title:"开发中...",url:""},
@@ -29,6 +30,17 @@ Page({
   onLoad: function () {
   },
   onShow: function(){
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'Smart工具箱 — 配网 / MQTT / 罗盘 / 万年历等实用小工具',
+      path: '/pages/index/index'
+    }
+  },
+  onShareTimeline: function () {
+    return {
+      title: 'Smart工具箱 — 配网 / MQTT / 罗盘 / 万年历等实用小工具'
+    }
   },
   //事件处理函数
   boxJump:function(e){

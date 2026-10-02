@@ -3,6 +3,17 @@ Page({
   data: {
     ascii:['NUT','SOH','STX','ETX','EOT','ENQ','ACK','BEL','BS','HT','LF','VT','FF','CR','SO','SI','DLE','DCI','DC2','DC3','DC4','NAK','SYN','TB','CAN','EM','SUB','ESC','FS','GS','RS','US','(space)']
   },
+  onShareAppMessage: function () {
+    return {
+      title: 'ASCII 码对照表',
+      path: '/pages/tools/ascii'
+    }
+  },
+  onShareTimeline: function () {
+    return {
+      title: 'ASCII 码对照表'
+    }
+  },
   onLoad: function (options) {
     let cii = this.data.ascii;
     for(let i = 33; i < 127; i++){

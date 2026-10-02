@@ -24,6 +24,17 @@ Page({
       url: '../logs/logs'
     })
   },
+  onShareAppMessage: function () {
+    return {
+      title: 'SmartConfig 一键配网工具',
+      path: '/pages/smartconfig/index'
+    }
+  },
+  onShareTimeline: function () {
+    return {
+      title: 'SmartConfig 一键配网工具'
+    }
+  },
   onLoad: function () {
     let _this = this;
   },
