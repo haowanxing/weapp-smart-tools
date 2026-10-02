@@ -6,7 +6,8 @@
     "pages/counter/click",
     "pages/tools/compass",
     "pages/tools/ascii",
-    "pages/tools/mqtt"
+    "pages/tools/mqtt",
+    "pages/tools/calendar"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,105 @@
+/* 万年历 + 黄历 */
+.cal {
+  padding: 16rpx 12rpx 40rpx 12rpx;
+  font-family: -apple-system, "PingFang SC", sans-serif;
+}
+
+/* 顶部 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+.nav {
+  width: 72rpx; height: 72rpx; line-height: 68rpx;
+  text-align: center; font-size: 48rpx; color: #c0392b;
+}
+.title .ym { font-size: 40rpx; font-weight: 600; color: #333; }
+.top-btns { display: flex; justify-content: center; gap: 20rpx; margin: 8rpx 0 16rpx 0; }
+.mini-btn {
+  min-width: 110rpx; height: 48rpx; line-height: 48rpx; padding: 0 20rpx;
+  text-align: center; font-size: 24rpx; color: #c0392b;
+  border: 1rpx solid #c0392b; border-radius: 24rpx;
+}
+
+/* 星期与网格 */
+.week-row { display: flex; }
+.week-cell { flex: 1; text-align: center; font-size: 26rpx; color: #888; padding: 12rpx 0; }
+.week-cell.weekend { color: #c0392b; }
+.grid { display: flex; flex-wrap: wrap; }
+.cell {
+  width: 14.28%; height: 96rpx;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-sizing: border-box; border-radius: 12rpx;
+}
+.d-solar { font-size: 32rpx; color: #333; line-height: 40rpx; }
+.d-sub { font-size: 20rpx; color: #999; line-height: 28rpx; }
+.d-sub.fest { color: #c0392b; }
+.cell.out .d-solar, .cell.out .d-sub { color: #ccc; }
+.cell.today { background-color: #fdecea; }
+.cell.selected { background-color: #c0392b; }
+.cell.selected .d-solar, .cell.selected .d-sub { color: #fff; }
+
+/* 详情容器 */
+.detail { margin-top: 24rpx; }
+.d-head {
+  padding: 24rpx; background: linear-gradient(135deg, #c0392b, #e05a4a);
+  border-radius: 16rpx; color: #fff;
+}
+.d-solar-big { font-size: 34rpx; font-weight: 600; }
+.d-lunar-big { font-size: 28rpx; margin-top: 8rpx; opacity: 0.95; }
+.tags { margin-top: 12rpx; }
+.tag {
+  display: inline-block; margin: 0 12rpx 8rpx 0; padding: 4rpx 16rpx;
+  font-size: 22rpx; background: rgba(255,255,255,0.25); border-radius: 20rpx;
+}
+
+/* 宜忌 */
+.yiji { display: flex; margin-top: 20rpx; gap: 16rpx; }
+.yj-col {
+  flex: 1; display: flex; padding: 20rpx; border-radius: 16rpx; background: #faf7f6;
+}
+.yj-mark {
+  flex-shrink: 0; width: 48rpx; height: 48rpx; line-height: 48rpx; text-align: center;
+  border-radius: 50%; color: #fff; font-size: 28rpx; margin-right: 16rpx;
+}
+.yi .yj-mark { background: #27ae60; }
+.ji .yj-mark { background: #c0392b; }
+.yj-text { flex: 1; font-size: 24rpx; color: #555; line-height: 36rpx; }
+
+/* 文本行 */
+.rows { margin-top: 20rpx; padding: 8rpx 24rpx; background: #faf7f6; border-radius: 16rpx; }
+.row { display: flex; padding: 14rpx 0; border-bottom: 1rpx solid #eee; }
+.row:last-child { border-bottom: none; }
+.row .k { flex-shrink: 0; width: 96rpx; color: #999; font-size: 26rpx; }
+.row .v { flex: 1; color: #333; font-size: 26rpx; line-height: 38rpx; }
+
+/* 分段标题 */
+.section-title {
+  margin: 28rpx 0 14rpx 8rpx; font-size: 28rpx; font-weight: 600; color: #333;
+  border-left: 6rpx solid #c0392b; padding-left: 16rpx;
+}
+
+/* 吉位 */
+.pos-grid { display: flex; flex-wrap: wrap; gap: 12rpx; }
+.pos {
+  width: calc(33.33% - 8rpx); box-sizing: border-box; padding: 16rpx;
+  background: #faf7f6; border-radius: 12rpx; text-align: center;
+}
+.pos .pk { display: block; font-size: 22rpx; color: #999; }
+.pos .pv { display: block; font-size: 28rpx; color: #c0392b; margin-top: 6rpx; }
+
+/* 时辰 */
+.time-grid { display: flex; flex-wrap: wrap; gap: 10rpx; }
+.time-cell {
+  width: calc(25% - 8rpx); box-sizing: border-box; padding: 12rpx 0;
+  border-radius: 12rpx; text-align: center;
+}
+.ji-time { background: #eafaf0; }
+.xiong-time { background: #f5f5f5; }
+.t-gz { display: block; font-size: 26rpx; color: #333; }
+.t-range { display: block; font-size: 20rpx; color: #999; margin: 4rpx 0; }
+.t-luck { display: block; font-size: 22rpx; font-weight: 600; }
+.ji-time .t-luck { color: #27ae60; }
+.xiong-time .t-luck { color: #999; }

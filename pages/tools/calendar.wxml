@@ -1,0 +1,82 @@
+<!--万年历 + 黄历-->
+<view class="cal">
+  <!-- 顶部操作栏 -->
+  <view class="header">
+    <view class="nav" bindtap="prevMonth">‹</view>
+    <view class="title"><text class="ym">{{year}}年{{month}}月</text></view>
+    <view class="nav" bindtap="nextMonth">›</view>
+  </view>
+  <view class="top-btns">
+    <view class="mini-btn" bindtap="backToday">今天</view>
+  </view>
+
+  <!-- 星期表头 -->
+  <view class="week-row">
+    <view wx:for="{{weekTitle}}" wx:key="*this" class="week-cell {{index==0||index==6?'weekend':''}}">{{item}}</view>
+  </view>
+
+  <!-- 日期格子 -->
+  <view class="grid">
+    <view
+      wx:for="{{days}}" wx:key="idx" wx:for-index="idx"
+      class="cell {{item.inMonth?'':'out'}} {{item.isSelected?'selected':''}} {{item.isToday?'today':''}}"
+      data-idx="{{idx}}" bindtap="onTapDay">
+      <text class="d-solar">{{item.day}}</text>
+      <text class="d-sub {{item.isFestival?'fest':''}}">{{item.sub}}</text>
+    </view>
+  </view>
+
+  <!-- 选中日黄历 -->
+  <view class="detail">
+    <view class="d-head">
+      <view class="d-solar-big">{{detail.solar}} {{detail.week}}</view>
+      <view class="d-lunar-big">{{detail.lunarYear}} {{detail.lunarMD}}</view>
+      <view class="tags">
+        <text wx:for="{{detail.festivals}}" wx:key="*this" class="tag">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 宜忌 -->
+    <view class="yiji">
+      <view class="yj-col yi">
+        <view class="yj-mark">宜</view>
+        <view class="yj-text">{{detail.yi}}</view>
+      </view>
+      <view class="yj-col ji">
+        <view class="yj-mark">忌</view>
+        <view class="yj-text">{{detail.ji}}</view>
+      </view>
+    </view>
+
+    <!-- 干支·神煞 -->
+    <view class="rows">
+      <view class="row"><text class="k">干支</text><text class="v">{{detail.ganzhi}}</text></view>
+      <view class="row"><text class="k">冲煞</text><text class="v">{{detail.chong}}</text></view>
+      <view class="row"><text class="k">值神</text><text class="v">{{detail.zhiShen}} · {{detail.zhiXing}}</text></view>
+      <view class="row"><text class="k">纳音</text><text class="v">{{detail.naYin}}</text></view>
+      <view class="row"><text class="k">星宿</text><text class="v">{{detail.xiu}}</text></view>
+      <view class="row"><text class="k">彭祖</text><text class="v">{{detail.pengZu}}</text></view>
+      <view class="row"><text class="k">胎神</text><text class="v">{{detail.tai}}</text></view>
+    </view>
+
+    <!-- 吉神方位 -->
+    <view class="section-title">吉神方位</view>
+    <view class="pos-grid">
+      <view class="pos"><text class="pk">财神</text><text class="pv">{{detail.posCai}}</text></view>
+      <view class="pos"><text class="pk">喜神</text><text class="pv">{{detail.posXi}}</text></view>
+      <view class="pos"><text class="pk">福神</text><text class="pv">{{detail.posFu}}</text></view>
+      <view class="pos"><text class="pk">阳贵</text><text class="pv">{{detail.posYangGui}}</text></view>
+      <view class="pos"><text class="pk">阴贵</text><text class="pv">{{detail.posYinGui}}</text></view>
+    </view>
+
+    <!-- 时辰吉凶 -->
+    <view class="section-title">时辰吉凶</view>
+    <view class="time-grid">
+      <view wx:for="{{times}}" wx:key="gz" class="time-cell {{item.luck=='吉'?'ji-time':'xiong-time'}}">
+        <text class="t-gz">{{item.gz}}</text>
+        <text class="t-range">{{item.range}}</text>
+        <text class="t-luck">{{item.luck}}</text>
+      </view>
+    </view>
+  </view>
+</view>

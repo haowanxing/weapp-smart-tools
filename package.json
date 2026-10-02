@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/haowanxing/weapp-smart-tools#readme",
   "dependencies": {
+    "lunar-javascript": "^1.7.7",
     "mqtt": "2.18.8"
   }
 }
